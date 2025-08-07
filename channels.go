@@ -36,7 +36,11 @@ func worker(id int, jobs <-chan int, results chan<- int, wg *sync.WaitGroup) {
 		results <- job * 2
 	}
 }
-
+/*
+The main goroutine sends jobs into a channel.
+Multiple worker goroutines process the jobs concurrently.
+We use a WaitGroup to wait for all work to finish.
+*/
 func prodConsumer() {
 	const numJobs = 5
 	const numWorkers = 3
